@@ -1,0 +1,195 @@
+<xs:schema xmlns:tns="http://ws.service.shape.calc.eli.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="unqualified" targetNamespace="http://ws.service.shape.calc.eli.com/" version="1.0">
+
+  <xs:element name="deleteAllPendingRequests" type="tns:deleteAllPendingRequests"/>
+
+  <xs:element name="deleteAllPendingRequestsResponse" type="tns:deleteAllPendingRequestsResponse"/>
+
+  <xs:element name="deleteAllResults" type="tns:deleteAllResults"/>
+
+  <xs:element name="deleteAllResultsResponse" type="tns:deleteAllResultsResponse"/>
+
+  <xs:element name="getAllCalculatedResults" type="tns:getAllCalculatedResults"/>
+
+  <xs:element name="getAllCalculatedResultsResponse" type="tns:getAllCalculatedResultsResponse"/>
+
+  <xs:element name="getAllPendingRequests" type="tns:getAllPendingRequests"/>
+
+  <xs:element name="getAllPendingRequestsResponse" type="tns:getAllPendingRequestsResponse"/>
+
+  <xs:element name="queueCalculationRequest" type="tns:queueCalculationRequest"/>
+
+  <xs:element name="queueCalculationRequestResponse" type="tns:queueCalculationRequestResponse"/>
+
+  <xs:element name="runAllPendingRequestsNoStopOnError" type="tns:runAllPendingRequestsNoStopOnError"/>
+
+  <xs:element name="runAllPendingRequestsNoStopOnErrorResponse" type="tns:runAllPendingRequestsNoStopOnErrorResponse"/>
+
+  <xs:element name="runAllPendingRequestsStopOnError" type="tns:runAllPendingRequestsStopOnError"/>
+
+  <xs:element name="runAllPendingRequestsStopOnErrorResponse" type="tns:runAllPendingRequestsStopOnErrorResponse"/>
+
+  <xs:complexType name="getAllPendingRequests">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getAllPendingRequestsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:pendingRequestsResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="pendingRequestsResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:successOrErrorResponse">
+        <xs:sequence>
+          <xs:element name="numPending" type="xs:int"/>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="pendingRequests" nillable="true" type="tns:calculationRequest"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="successOrErrorResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="causeMsg" type="xs:string"/>
+      <xs:element minOccurs="0" name="clazz" type="xs:string"/>
+      <xs:element minOccurs="0" name="code" type="tns:respCode"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="errMsg" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType final="extension restriction" name="calculationRequest">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="calcType" type="tns:calcType"/>
+      <xs:element minOccurs="0" name="dimension" type="xs:double"/>
+      <xs:element minOccurs="0" name="shapeName" type="tns:shapeName"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="runAllPendingRequestsNoStopOnError">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="runAllPendingRequestsNoStopOnErrorResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:runPendingRequestsResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="runPendingRequestsResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:successOrErrorResponse">
+        <xs:sequence>
+          <xs:element name="numRun" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="queueCalculationRequest">
+    <xs:sequence>
+      <xs:element name="ShapeName" type="tns:shapeName"/>
+      <xs:element name="CalcType" type="tns:calcType"/>
+      <xs:element name="Dimension" type="xs:double"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="queueCalculationRequestResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:successOrErrorResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="runAllPendingRequestsStopOnError">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="runAllPendingRequestsStopOnErrorResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:runPendingRequestsResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="deleteAllResults">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="deleteAllResultsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:successOrErrorResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAllCalculatedResults">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getAllCalculatedResultsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:calculatedResultsResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="calculatedResultsResponse">
+    <xs:complexContent>
+      <xs:extension base="tns:successOrErrorResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="calculatedResults" nillable="true" type="tns:calculationResult"/>
+          <xs:element name="numCalculated" type="xs:int"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType final="extension restriction" name="calculationResult">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="calcType" type="tns:calcType"/>
+      <xs:element minOccurs="0" name="dimension" type="xs:double"/>
+      <xs:element name="error" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="result" type="xs:double"/>
+      <xs:element minOccurs="0" name="shapeName" type="tns:shapeName"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="deleteAllPendingRequests">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="deleteAllPendingRequestsResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:successOrErrorResponse"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:simpleType name="calcType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CALC_AREA"/>
+      <xs:enumeration value="CALC_VOLUME"/>
+      <xs:enumeration value="CALC_FOO"/>
+      <xs:enumeration value="CALC_FOOBAR"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="shapeName">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="CIRCLE"/>
+      <xs:enumeration value="SQUARE"/>
+      <xs:enumeration value="EQUILATERALTRIANGLE"/>
+      <xs:enumeration value="SPHERE"/>
+      <xs:enumeration value="CUBE"/>
+      <xs:enumeration value="TETRAHEDRON"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="respCode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="SUCCESS"/>
+      <xs:enumeration value="BADSHAPE"/>
+      <xs:enumeration value="BADCALC"/>
+      <xs:enumeration value="BADDIM"/>
+      <xs:enumeration value="ERROR"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+</xs:schema>

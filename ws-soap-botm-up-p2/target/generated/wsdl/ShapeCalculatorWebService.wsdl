@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="ShapeCalculatorWebService" targetNamespace="http://ws.service.shape.calc.eli.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://ws.service.shape.calc.eli.com/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+<schema xmlns="http://www.w3.org/2001/XMLSchema">
+  <import namespace="http://ws.service.shape.calc.eli.com/" schemaLocation="ShapeCalculatorWebService_schema1.xsd"/>
+</schema>
+  </wsdl:types>
+  <wsdl:message name="deleteAllResultsResponse">
+    <wsdl:part name="parameters" element="tns:deleteAllResultsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllCalculatedResultsResponse">
+    <wsdl:part name="parameters" element="tns:getAllCalculatedResultsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteAllResults">
+    <wsdl:part name="parameters" element="tns:deleteAllResults">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteAllPendingRequestsResponse">
+    <wsdl:part name="parameters" element="tns:deleteAllPendingRequestsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteAllPendingRequests">
+    <wsdl:part name="parameters" element="tns:deleteAllPendingRequests">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllPendingRequests">
+    <wsdl:part name="parameters" element="tns:getAllPendingRequests">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="runAllPendingRequestsNoStopOnError">
+    <wsdl:part name="parameters" element="tns:runAllPendingRequestsNoStopOnError">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllPendingRequestsResponse">
+    <wsdl:part name="parameters" element="tns:getAllPendingRequestsResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queueCalculationRequest">
+    <wsdl:part name="parameters" element="tns:queueCalculationRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="runAllPendingRequestsStopOnError">
+    <wsdl:part name="parameters" element="tns:runAllPendingRequestsStopOnError">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="queueCalculationRequestResponse">
+    <wsdl:part name="parameters" element="tns:queueCalculationRequestResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="runAllPendingRequestsStopOnErrorResponse">
+    <wsdl:part name="parameters" element="tns:runAllPendingRequestsStopOnErrorResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="runAllPendingRequestsNoStopOnErrorResponse">
+    <wsdl:part name="parameters" element="tns:runAllPendingRequestsNoStopOnErrorResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getAllCalculatedResults">
+    <wsdl:part name="parameters" element="tns:getAllCalculatedResults">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ShapeCalculatorWebService">
+    <wsdl:operation name="getAllPendingRequests">
+      <wsdl:input name="getAllPendingRequests" message="tns:getAllPendingRequests">
+    </wsdl:input>
+      <wsdl:output name="getAllPendingRequestsResponse" message="tns:getAllPendingRequestsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="runAllPendingRequestsNoStopOnError">
+      <wsdl:input name="runAllPendingRequestsNoStopOnError" message="tns:runAllPendingRequestsNoStopOnError">
+    </wsdl:input>
+      <wsdl:output name="runAllPendingRequestsNoStopOnErrorResponse" message="tns:runAllPendingRequestsNoStopOnErrorResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queueCalculationRequest">
+      <wsdl:input name="queueCalculationRequest" message="tns:queueCalculationRequest">
+    </wsdl:input>
+      <wsdl:output name="queueCalculationRequestResponse" message="tns:queueCalculationRequestResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="runAllPendingRequestsStopOnError">
+      <wsdl:input name="runAllPendingRequestsStopOnError" message="tns:runAllPendingRequestsStopOnError">
+    </wsdl:input>
+      <wsdl:output name="runAllPendingRequestsStopOnErrorResponse" message="tns:runAllPendingRequestsStopOnErrorResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteAllResults">
+      <wsdl:input name="deleteAllResults" message="tns:deleteAllResults">
+    </wsdl:input>
+      <wsdl:output name="deleteAllResultsResponse" message="tns:deleteAllResultsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllCalculatedResults">
+      <wsdl:input name="getAllCalculatedResults" message="tns:getAllCalculatedResults">
+    </wsdl:input>
+      <wsdl:output name="getAllCalculatedResultsResponse" message="tns:getAllCalculatedResultsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteAllPendingRequests">
+      <wsdl:input name="deleteAllPendingRequests" message="tns:deleteAllPendingRequests">
+    </wsdl:input>
+      <wsdl:output name="deleteAllPendingRequestsResponse" message="tns:deleteAllPendingRequestsResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ShapeCalculatorWebServiceServiceSoapBinding" type="tns:ShapeCalculatorWebService">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getAllPendingRequests">
+      <soap12:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllPendingRequests">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllPendingRequestsResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="runAllPendingRequestsNoStopOnError">
+      <soap12:operation soapAction="" style="document"/>
+      <wsdl:input name="runAllPendingRequestsNoStopOnError">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="runAllPendingRequestsNoStopOnErrorResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="queueCalculationRequest">
+      <soap12:operation soapAction="" style="document"/>
+      <wsdl:input name="queueCalculationRequest">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="queueCalculationRequestResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="runAllPendingRequestsStopOnError">
+      <soap12:operation soapAction="" style="document"/>
+      <wsdl:input name="runAllPendingRequestsStopOnError">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="runAllPendingRequestsStopOnErrorResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteAllResults">
+      <soap12:operation soapAction="" style="document"/>
+      <wsdl:input name="deleteAllResults">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteAllResultsResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllCalculatedResults">
+      <soap12:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllCalculatedResults">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllCalculatedResultsResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteAllPendingRequests">
+      <soap12:operation soapAction="" style="document"/>
+      <wsdl:input name="deleteAllPendingRequests">
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteAllPendingRequestsResponse">
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ShapeCalculatorWebService">
+    <wsdl:port name="ShapeCalculatorWebServicePort" binding="tns:ShapeCalculatorWebServiceServiceSoapBinding">
+      <soap12:address location="http://localhost:8080/web-service-soap-bottom-up/services/ws/ShapeCalculatorWebService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
